@@ -67,12 +67,15 @@ main > div {
 }
 
 #hourly-panel,
-#daily-panel {
+paris #daily-panel {
   grid-column: 1 / -1;
 }
 
 #main-panel {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 #weather-placeholder {
@@ -87,10 +90,46 @@ main > div {
   width: auto;
 }
 
+#min-max-placeholder {
+  display: flex;
+  gap: 1em;
+}
+
+#min-max-placeholder > * {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: aliceblue;
+  border-radius: 8px;
+  align-items: center;
+  padding: 1em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+#min-max-placeholder svg {
+  height: 1.2em;
+}
+
+#min,
+#max {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+}
+
+#min {
+  color: red;
+}
+
+#max {
+  color: blue;
+}
+
 #weather-info {
   display: grid;
   grid-template-columns: 40px 1fr 80px;
-  row-gap: 0.8em;
+  row-gap: 1.2em;
 }
 
 #weather-info > :nth-child(3n) {

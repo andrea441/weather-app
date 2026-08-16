@@ -9,7 +9,16 @@ function createAPIUrl(city) {
 function formatWeatherData(data) {
   return {
     datetime: data.currentConditions.datetime,
+    address: data.resolvedAddress,
     currentTemperature: data.currentConditions.temp,
+    tempMax: data.days[0].tempmax,
+    tempMin: data.days[0].tempmin,
+    conditions: data.currentConditions.conditions,
+    feelsLike: data.currentConditions.feelslike,
+    humidity: data.currentConditions.humidity,
+    windSpeed: data.currentConditions.windspeed,
+    visibility: data.currentConditions.visibility,
+    pressure: data.currentConditions.pressure,
   };
 }
 
@@ -22,7 +31,9 @@ async function getWeatherData(city) {
       throw new Error("Request wasn't valid");
     }
 
-    return await response.json();
+    const data = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
     console.error(error);
   }

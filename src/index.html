@@ -24,7 +24,12 @@
           />
         </svg>
         <form>
-          <input type="text" id="city" placeholder="Search for a city..." />
+          <input
+            type="text"
+            id="city"
+            placeholder="Search for a city..."
+            autocomplete="false"
+          />
         </form>
       </div>
     </header>
@@ -48,6 +53,34 @@
             />
           </svg>
         </div>
+        <div id="min-max-placeholder">
+          <div id="max-placeholder">
+            <div id="max">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>arrow-up-thin</title>
+                <path
+                  d="M7.03 9.97H11.03V18.89L13.04 18.92V9.97H17.03L12.03 4.97Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span>34°</span>
+            </div>
+            <p>High</p>
+          </div>
+          <div id="min-placeholder">
+            <div id="min">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>arrow-down-thin</title>
+                <path
+                  d="M7.03 13.92H11.03V5L13.04 4.97V13.92H17.03L12.03 18.92Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span>22°</span>
+            </div>
+            <p>Low</p>
+          </div>
+        </div>
       </div>
       <div id="details-panel">
         <h2>Wheater Details</h2>
@@ -59,7 +92,7 @@
             />
           </svg>
           <span>Feels like</span>
-          <span>32°</span>
+          <span id="feels-like">32°</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <title>water</title>
             <path
@@ -67,7 +100,7 @@
             />
           </svg>
           <span>Humidity</span>
-          <span>35%</span>
+          <span id="humidity">35%</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <title>weather-windy</title>
             <path
@@ -75,7 +108,7 @@
             />
           </svg>
           <span>Wind</span>
-          <span>14 km/h</span>
+          <span id="wind">14 km/h</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <title>eye-outline</title>
             <path
@@ -83,7 +116,7 @@
             />
           </svg>
           <span>Visibility</span>
-          <span>16 km</span>
+          <span id="visibility">16 km</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <title>clock-outline</title>
             <path
@@ -91,15 +124,15 @@
             />
           </svg>
           <span>Pressure</span>
-          <span>1012 hPa</span>
+          <span id="pressure">1012 hPa</span>
         </div>
       </div>
-      <div id="hourly-panel">
+      <!-- <div id="hourly-panel">
         <h2>Hourly Forecast</h2>
       </div>
       <div id="daily-panel">
         <h2>5-Day Forecast</h2>
-      </div>
+      </div> -->
     </main>
   </body>
 </html>
