@@ -1,9 +1,25 @@
+import sunny from '../images/clear-day.svg';
+import clearNight from '../images/clear-night.svg';
+import partlyCloudDay from '../images/partly-cloudy-day.svg';
+import partlyCloudNight from '../images/partly-cloudy-night.svg';
+import cloudy from '../images/cloudy.svg';
+import rain from '../images/rain.svg';
+
 function capitalizeWords(text) {
   return text
     .split(' ')
-    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
 }
+
+const weatherImages = {
+  'clear-day': sunny,
+  'partly-cloudy-day': partlyCloudDay,
+  rain: rain,
+  cloudy: cloudy,
+  'partly-cloudy-night': partlyCloudNight,
+  'clear-night': clearNight,
+};
 
 function renderMainWeather(data) {
   const weatherPlaceholder = document.querySelector(
@@ -12,6 +28,7 @@ function renderMainWeather(data) {
   const minPlaceholder = document.querySelector('#min span');
   const maxPlaceholder = document.querySelector('#max span');
   const addressPlaceholder = document.querySelector('#city-placeholder span');
+  const iconPlaceholder = document.querySelector('#weather-icon');
 
   const address = capitalizeWords(data.address);
 
@@ -19,6 +36,9 @@ function renderMainWeather(data) {
   weatherPlaceholder.textContent = `${data.currentTemperature}°`;
   minPlaceholder.textContent = `${data.tempMin}°`;
   maxPlaceholder.textContent = `${data.tempMax}°`;
+
+  console.log(data.icon);
+  iconPlaceholder.src = weatherImages[data.icon];
 }
 
 function renderDetails(data) {

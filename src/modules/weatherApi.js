@@ -14,6 +14,7 @@ function formatWeatherData(data) {
     tempMax: data.days[0].tempmax,
     tempMin: data.days[0].tempmin,
     conditions: data.currentConditions.conditions,
+    icon: data.currentConditions.icon,
     feelsLike: data.currentConditions.feelslike,
     humidity: data.currentConditions.humidity,
     windSpeed: data.currentConditions.windspeed,
