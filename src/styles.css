@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: aliceblue;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+svg {
+  height: 1.5rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+header {
+  display: flex;
+  gap: 2em;
+}
+
+#logo,
+#search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+#search-bar {
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  flex: 1;
+}
+
+#search-bar form {
+  flex: 1;
+
+  display: flex;
+}
+
+#search-bar input {
+  border: none;
+  background: none;
+  font-size: 14px;
+  flex: 1;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1em;
+}
+
+main > div {
+  border-radius: 8px;
+  background-color: white;
+  padding: 1em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+#hourly-panel,
+#daily-panel {
+  grid-column: 1 / -1;
+}
+
+#main-panel {
+  height: 100%;
+}
+
+#weather-placeholder {
+  display: flex;
+  font-size: 4em;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#weather-placeholder svg {
+  height: 2em;
+  width: auto;
+}
+
+#weather-info {
+  display: grid;
+  grid-template-columns: 40px 1fr 80px;
+  row-gap: 0.8em;
+}
+
+#weather-info > :nth-child(3n) {
+  text-align: right;
+}
