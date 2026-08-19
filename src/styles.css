@@ -1,9 +1,7 @@
 @font-face {
   font-family: 'Inter';
-  src:
-    url('./fonts/Inter-Regular.woff2') format('woff2'),
-    url('./fonts/Inter-Regular.woff') format('woff');
-  font-weight: normal;
+  src: url('./fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
   font-style: normal;
 }
 
@@ -86,6 +84,25 @@ paris #daily-panel {
   display: flex;
   flex-direction: column;
   gap: 1em;
+}
+
+#city-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#city-placeholder button {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+#city-placeholder button.active {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
 }
 
 #weather-placeholder {

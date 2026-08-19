@@ -36,16 +36,23 @@
     <main>
       <div id="main-panel">
         <div id="city-placeholder">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <title>map-marker</title>
-            <path
-              d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
-            />
-          </svg>
-          <span></span>
+          <div id="city">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>map-marker</title>
+              <path
+                d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
+              />
+            </svg>
+            <span></span>
+          </div>
+          <div id="unit-toggle">
+            <button id="celsius">°C</button>
+            <span>|</span>
+            <button id="farenheit">°F</button>
+          </div>
         </div>
         <div id="weather-placeholder">
-          <span>0</span>
+          <span>0°</span>
           <img id="weather-icon" alt="Weather" />
         </div>
         <div id="min-max-placeholder">
@@ -58,7 +65,7 @@
                   fill="currentColor"
                 />
               </svg>
-              <span>34°</span>
+              <span>0°</span>
             </div>
             <p>High</p>
           </div>
@@ -71,7 +78,7 @@
                   fill="currentColor"
                 />
               </svg>
-              <span>22°</span>
+              <span>°</span>
             </div>
             <p>Low</p>
           </div>
