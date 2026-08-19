@@ -1,6 +1,6 @@
 const baseUrl =
   'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/';
-const apiKey = '';
+const apiKey = 'W3MAJYM9F5CUVXSBV9M68M56B';
 
 function createAPIUrl(city) {
   return `${baseUrl}${city}?key=${apiKey}&unitGroup=metric`;
@@ -24,20 +24,16 @@ function formatWeatherData(data) {
 }
 
 async function getWeatherData(city) {
-  try {
-    const url = createAPIUrl(city);
-    const response = await fetch(url);
+  const url = createAPIUrl(city);
+  const response = await fetch(url);
 
-    if (!response.ok) {
-      throw new Error("Request wasn't valid");
-    }
-
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.error(error);
+  if (!response.ok) {
+    throw new Error("Request wasn't valid");
   }
+
+  const data = await response.json();
+  console.log(data);
+  return data;
 }
 
 export default async function getCleanWeatherData(city) {

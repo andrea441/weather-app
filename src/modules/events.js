@@ -1,20 +1,36 @@
 import getCleanWeatherData from './weatherApi.js';
 import { renderWeather } from './render.js';
 import { getUnits, setUnits, setWeatherData } from './state.js';
+import loading from './loading.js';
 
 const searchForm = document.querySelector('form');
 const cityInput = document.querySelector('input');
 const unitsSelector = document.querySelector('#unit-toggle');
+const errorMessage = document.querySelector('#error');
 
 async function handleSearch(event) {
   event.preventDefault();
 
-  const city = cityInput.value;
-  const data = await getCleanWeatherData(city);
+  errorMessage.classList.add('hidden');
+  errorMessage.textContent = '';
 
-  setWeatherData(data);
+  loading.showLoading();
 
-  renderWeather();
+  try {
+    const city = cityInput.value;
+    const data = await getCleanWeatherData(city);
+
+    setWeatherData(data);
+    renderWeather();
+  } catch (error) {
+    errorMessage.classList.remove('hidden');
+    errorMessage.textContent =
+      'Could not find that location. Please try again.';
+
+    console.error(error);
+  } finally {
+    loading.hideLoading();
+  }
 }
 
 function handleToggleUnits(event) {
