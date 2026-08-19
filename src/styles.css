@@ -153,7 +153,14 @@ paris #daily-panel {
   color: blue;
 }
 
+#details-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 #weather-info {
+  flex: 1;
   display: grid;
   grid-template-columns: 40px 1fr 80px;
   row-gap: 1.2em;

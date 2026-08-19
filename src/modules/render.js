@@ -5,13 +5,25 @@ import partlyCloudNight from '../images/partly-cloudy-night.svg';
 import cloudy from '../images/cloudy.svg';
 import rain from '../images/rain.svg';
 
-import { getUnits } from './state.js';
+import { getUnits, getWeatherData } from './state.js';
 
 function capitalizeWords(text) {
   return text
     .split(' ')
     .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
+}
+
+function formatTemperature(celsius) {
+  let temperature = celsius;
+
+  const units = getUnits();
+
+  if (units === 'F') {
+    temperature = celsius * (9 / 5) + 32;
+  }
+
+  return temperature.toFixed(1);
 }
 
 const weatherImages = {
@@ -23,7 +35,9 @@ const weatherImages = {
   'clear-night': clearNight,
 };
 
-function renderMainWeather(data) {
+function renderMainWeather() {
+  const data = getWeatherData();
+
   const weatherPlaceholder = document.querySelector(
     '#weather-placeholder span'
   );
@@ -33,17 +47,9 @@ function renderMainWeather(data) {
   const iconPlaceholder = document.querySelector('#weather-icon');
 
   const address = capitalizeWords(data.address);
-  let temperature = data.currentTemperature;
-  let min = data.tempMin;
-  let max = data.tempMax;
-
-  const units = getUnits();
-
-  if (units === 'F') {
-    temperature = temperature * (9 / 5) + 32;
-    min = min * (9 / 5) + 32;
-    max = max * (9 / 5) + 32;
-  }
+  let temperature = formatTemperature(data.currentTemperature);
+  let min = formatTemperature(data.tempMin);
+  let max = formatTemperature(data.tempMax);
 
   addressPlaceholder.textContent = address;
   weatherPlaceholder.textContent = `${temperature}°`;
@@ -54,20 +60,16 @@ function renderMainWeather(data) {
   iconPlaceholder.src = weatherImages[data.icon];
 }
 
-function renderDetails(data) {
+function renderDetails() {
+  const data = getWeatherData();
+
   const feelPlaceholder = document.querySelector('#feels-like');
   const humidityPlaceholder = document.querySelector('#humidity');
   const windPlaceholder = document.querySelector('#wind');
   const visibilityPlaceholder = document.querySelector('#visibility');
   const pressurePlaceholder = document.querySelector('#pressure');
 
-  let feelsLike = data.feelsLike;
-
-  const units = getUnits();
-
-  if (units === 'F') {
-    feelsLike = feelsLike * (9 / 5) + 32;
-  }
+  let feelsLike = formatTemperature(data.feelsLike);
 
   feelPlaceholder.textContent = `${feelsLike}°`;
   humidityPlaceholder.textContent = `${data.humidity}%`;
@@ -86,10 +88,10 @@ function renderUnitToggle() {
   farenheit.classList.toggle('active', units === 'F');
 }
 
-function renderWeather(data) {
-  renderMainWeather(data);
-  renderDetails(data);
+function renderWeather() {
+  renderMainWeather();
+  renderDetails();
   renderUnitToggle();
 }
 
-export { renderWeather, renderUnitToggle };
+export { renderWeather };

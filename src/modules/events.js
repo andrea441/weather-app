@@ -1,6 +1,6 @@
 import getCleanWeatherData from './weatherApi.js';
-import { renderWeather, renderUnitToggle } from './render.js';
-import { getUnits, setUnits } from './state.js';
+import { renderWeather } from './render.js';
+import { getUnits, setUnits, setWeatherData } from './state.js';
 
 const searchForm = document.querySelector('form');
 const cityInput = document.querySelector('input');
@@ -12,7 +12,9 @@ async function handleSearch(event) {
   const city = cityInput.value;
   const data = await getCleanWeatherData(city);
 
-  renderWeather(data);
+  setWeatherData(data);
+
+  renderWeather();
 }
 
 function handleToggleUnits(event) {
@@ -23,7 +25,7 @@ function handleToggleUnits(event) {
   if (event.target.id === 'celsius' && units !== 'C') setUnits('C');
   else if (event.target.id === 'farenheit' && units !== 'F') setUnits('F');
 
-  renderUnitToggle();
+  renderWeather();
 }
 
 export default function initEvents() {
